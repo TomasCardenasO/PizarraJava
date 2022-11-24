@@ -2,6 +2,10 @@ package interfazGrafica;
 
 import javax.swing.JFrame;
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 public class Ventana extends JFrame {
@@ -13,6 +17,7 @@ public class Ventana extends JFrame {
         this.setLayout(new BorderLayout());
         
         panelPrincipal = new PanelPrincipal();
+        
         this.add(panelPrincipal, BorderLayout.CENTER);
         
         setTitle("JBoard");
@@ -20,4 +25,6 @@ public class Ventana extends JFrame {
         this.setSize(ancho,largo);
         this.setVisible(true);
     }
+
+   
 }
