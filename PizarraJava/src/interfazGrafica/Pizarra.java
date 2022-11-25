@@ -41,9 +41,20 @@ public class Pizarra extends JPanel {
     MouseAdapter ma = new MouseAdapter(){   //se pueden añadir más funciones, por eso las de abajo quedaron en modo borrador
         @Override
         public void mouseDragged(MouseEvent e) {
-            Graphics g = getGraphics();  
-            g.setColor(Color.BLACK);  
-            g.fillOval(e.getX(),e.getY(),20,20);  
+                 Graphics g = getGraphics();  
+            if(e.getModifiersEx() == 1024){
+                  g.setColor(Color.BLACK);  
+            g.fillOval(e.getX(),e.getY(),20,20);
+                
+            }
+            else if(e.getModifiersEx() == 4096){  
+                g.setColor(Color.WHITE);  
+            g.fillOval(e.getX(),e.getY(),20,20);
+                
+                
+            }
+     
+            
             }  
         public void mouseClicked(MouseEvent e) {
             System.out.println("jaja");
