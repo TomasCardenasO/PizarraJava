@@ -13,6 +13,7 @@ import java.awt.event.MouseListener;
 public class Pizarra extends JPanel {
     public static int anchoPizarra = 1265;
     public static int largoPizarra = 600;
+    Graphics g;
     
 
     public Pizarra() {
@@ -57,7 +58,7 @@ public class Pizarra extends JPanel {
             
             }  
         public void mouseClicked(MouseEvent e) {
-            System.out.println("jaja");
+            System.out.println("jajjssaasa");
         }
         public void mouseReleased(MouseEvent e){
             

@@ -13,6 +13,7 @@ import java.awt.event.MouseMotionListener;
 import javax.swing.JButton;
 
 public class PanelPrincipal extends JPanel    {
+    JButton botonLimpiar;
     public ArrayList<Pizarra> pizarras;
     public int indicePizarra;
     private Pizarra pizarraActual;
@@ -72,46 +73,49 @@ public class PanelPrincipal extends JPanel    {
     }
     public void Botones(){  
         this.setLayout(null);
-        Boton botonLimpiar = new Boton("Limpiar", pizarraActual);
+        botonLimpiar = new JButton("Limpiar");
         botonLimpiar.setBounds(1195,5,80,40);
         this.add(botonLimpiar);
+        eventoOyenteDeRaton();
     }
-    private class Boton extends JButton implements MouseListener{  //Botones que hay que implementar bien
-        private int x;
-        private int y = 1;
-        private Pizarra panel;
-        public Boton(String s, Pizarra p) {
-            super(s);
-            panel = p;
-        }
+    private void eventoOyenteDeRaton(){
+        MouseListener oyentedeRaton = new MouseListener(){
+            @Override
+            public void mouseClicked(MouseEvent e) {
+               pizarraActual.g = pizarraActual.getGraphics();  
 
-        @Override
-        public void mouseClicked(MouseEvent e) {
-             
-            panel.repaint(); //intenté un "horrar pizarra", que en realidad era blanquear toda la pizarra de nuevo.
-        }
+                System.out.println("jaja");
+                pizarraActual.g.setColor(Color.WHITE);  
+             pizarraActual.g.fillRect(0,0,2000,2000);
+            }
 
-        @Override
-        public void mousePressed(MouseEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-        }
+            @Override
+            public void mousePressed(MouseEvent e) {
+               
+            }
 
-        @Override
-        public void mouseReleased(MouseEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-        }
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                
+            }
 
-        @Override
-        public void mouseEntered(MouseEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-        }
-
-        @Override
-        public void mouseExited(MouseEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-        }
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                System.out.println("jaja");            
+                }
+                
+            @Override
+            public void mouseExited(MouseEvent e) {
+                
+            }
+            
+        };
         
-      
+        
+        
+        
+        
+        
+        botonLimpiar.addMouseListener(oyentedeRaton);
     }
-    
 }
