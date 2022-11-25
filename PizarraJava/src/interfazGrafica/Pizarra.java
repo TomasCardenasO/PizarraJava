@@ -13,12 +13,12 @@ import java.awt.event.MouseListener;
 public class Pizarra extends JPanel {
     public static int anchoPizarra = 1265;
     public static int largoPizarra = 600;
-    Graphics g;
+    public Graphics g;
     
 
     public Pizarra() {
         MListener();
-   
+        
         
         this.setBackground(Color.white);
         this.setSize(anchoPizarra, largoPizarra);

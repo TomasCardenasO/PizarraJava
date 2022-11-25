@@ -1,5 +1,6 @@
 package interfazGrafica;
 
+import DrawingTools.Lapiz;
 import java.awt.Color;
 import javax.swing.JPanel;
 import javax.swing.JFrame;
@@ -18,9 +19,11 @@ public class PanelPrincipal extends JPanel    {
     public int indicePizarra;
     private Pizarra pizarraActual;
     private int cantidadPizarras;
+    private Lapiz lapiz;
     
     public PanelPrincipal() {
         Botones();
+        
         this.setLayout(null);
         this.setBackground(Color.gray); //rojo es color de prueba
         pizarras = new ArrayList<Pizarra>();
@@ -29,6 +32,8 @@ public class PanelPrincipal extends JPanel    {
         pizarraActual = pizarras.get(indicePizarra);
         this.add(pizarraActual);
         cantidadPizarras = pizarras.size();
+        lapiz = new Lapiz(pizarraActual);
+        
     }
     public void añadirPizarra() { //Opcion se desbloquea cuando estas en la ultima pizarra
         if(indicePizarra == pizarras.size() - 1) {
