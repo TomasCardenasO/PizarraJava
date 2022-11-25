@@ -17,7 +17,7 @@ public class Pizarra extends JPanel {
     
 
     public Pizarra() {
-        MListener();
+        //MListener();
         
         
         this.setBackground(Color.white);
@@ -32,7 +32,7 @@ public class Pizarra extends JPanel {
             g.fillOval(0,0,2000,2000); 
         }
     }
-    private void MListener(){  //iniciador de los mouselisteners que se le asigna un adaptador, la función se pone en el constructor(ya hecho)
+    /*private void MListener(){  //iniciador de los mouselisteners que se le asigna un adaptador, la función se pone en el constructor(ya hecho)
         addMouseMotionListener(ma);
         addMouseListener(ma);
     
@@ -45,12 +45,12 @@ public class Pizarra extends JPanel {
                  Graphics g = getGraphics();  
             if(e.getModifiersEx() == 1024){
                   g.setColor(Color.BLACK);  
-            g.fillOval(e.getX(),e.getY(),20,20);
+            g.fillOval(e.getX(),e.getY(),tamanoL,tamanoL);
                 
             }
             else if(e.getModifiersEx() == 4096){  
                 g.setColor(Color.WHITE);  
-            g.fillOval(e.getX(),e.getY(),20,20);
+            g.fillOval(e.getX(),e.getY(),tamanoG,tamanoG);
                 
                 
             }
@@ -65,7 +65,7 @@ public class Pizarra extends JPanel {
         }   
    
     };
-            
+        */    
 
   /*  public void mousePressed(MouseEvent e){
             

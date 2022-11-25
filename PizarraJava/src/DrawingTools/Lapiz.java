@@ -13,6 +13,7 @@ import java.awt.event.MouseListener;
  * @author Dreyko
  */
 public class Lapiz{ 
+    public int tamanoL = 20, tamanoG = 20;
     Pizarra pizarraActual;
     public Lapiz(Pizarra p){
     pizarraActual = p;
@@ -28,12 +29,12 @@ public class Lapiz{
             if(e.getModifiersEx() == 1024){
                 
                   pizarraActual.g.setColor(Color.BLACK);  
-           pizarraActual.g.fillOval(e.getX(),e.getY(),20,20);
+           pizarraActual.g.fillOval(e.getX(),e.getY(),tamanoL,tamanoL);
                 
             }
             else if(e.getModifiersEx() == 4096){  
                pizarraActual.g.setColor(Color.WHITE);  
-           pizarraActual.g.fillOval(e.getX(),e.getY(),20,20);
+           pizarraActual.g.fillOval(e.getX(),e.getY(),tamanoG,tamanoG);
                 
                 
             }
