@@ -1,50 +1,57 @@
-
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package DrawingTools;
 
 import interfazGrafica.Pizarra;
 import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 /**
  *
  * @author Dreyko
  */
-public class Lapiz{ 
+public class Rectangulos {
     public int tamanoL = 20, tamanoG = 20;
-    public boolean estado = true;
+    public int x = 0, y = 0;
     Pizarra pizarraActual;
-    public Lapiz(Pizarra p){
+    public Boolean estado = false;
+    public Rectangulos(Pizarra p){
     pizarraActual = p;
     eventoOyenteDeRaton();
-    }
     
     
+    
+}
     private void eventoOyenteDeRaton(){
          MouseAdapter adapter = new MouseAdapter(){   //se pueden añadir más funciones, por eso las de abajo quedaron en modo borrador
         @Override
         public void mouseDragged(MouseEvent e) { 
-            
-            pizarraActual.g = pizarraActual.getGraphics();
             if(estado == true){
+              pizarraActual.g = pizarraActual.getGraphics();
             if(e.getModifiersEx() == 1024){
+                     pizarraActual.g = pizarraActual.getGraphics();
                 
                   pizarraActual.g.setColor(Color.BLACK);  
-           pizarraActual.g.fillOval(e.getX(),e.getY(),tamanoL,tamanoL);
-                
+           pizarraActual.g.fillRect(x,y,e.getX()-x,e.getY()-y);
+           
             }
             else if(e.getModifiersEx() == 4096){  
-               pizarraActual.g.setColor(Color.WHITE);  
-           pizarraActual.g.fillOval(e.getX(),e.getY(),tamanoG,tamanoG);
-                
+               tamanoG = tamanoG + 1;
+               
                 
             }
      
             
             }  }
-        public void mouseClicked(MouseEvent e) {
+        public void mousePressed(MouseEvent e) {
+            pizarraActual.g = pizarraActual.getGraphics();
+               x = e.getX();
+               y = e.getY();
+                   pizarraActual.g.setColor(Color.BLACK);  
+                  pizarraActual.g.fillRect(x,y,5,5);
       
         
         }
@@ -65,4 +72,3 @@ public class Lapiz{
         pizarraActual.addMouseMotionListener(adapter);
     
 }}
-

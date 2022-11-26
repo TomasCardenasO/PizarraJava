@@ -1,6 +1,7 @@
 package interfazGrafica;
 
 import DrawingTools.Lapiz;
+import DrawingTools.Rectangulos;
 import java.awt.Color;
 import javax.swing.JPanel;
 import javax.swing.JFrame;
@@ -14,7 +15,7 @@ import java.awt.event.MouseMotionListener;
 import javax.swing.JButton;
 
 public class PanelPrincipal extends JPanel    {
-    private JButton botonLimpiar, botonAchicar, botonAgrandar;
+    private JButton botonLimpiar, botonAchicar, botonAgrandar, botonRectangulos, botonLapiz;
     
     
     public ArrayList<Pizarra> pizarras;
@@ -22,7 +23,7 @@ public class PanelPrincipal extends JPanel    {
     private Pizarra pizarraActual;
     private int cantidadPizarras;
     private Lapiz lapiz;
-    
+    private Rectangulos rectangulos;
     public PanelPrincipal() {
         Botones();
         
@@ -35,6 +36,7 @@ public class PanelPrincipal extends JPanel    {
         this.add(pizarraActual);
         cantidadPizarras = pizarras.size();
         lapiz = new Lapiz(pizarraActual);
+        rectangulos = new Rectangulos(pizarraActual);
         
     }
     public void añadirPizarra() { //Opcion se desbloquea cuando estas en la ultima pizarra
@@ -90,6 +92,12 @@ public class PanelPrincipal extends JPanel    {
         botonAchicar = new JButton("Achicar");
         botonAchicar.setBounds(975,5,100,40);
         this.add(botonAchicar);
+        botonLapiz = new JButton("Lapiz");
+        botonLapiz.setBounds(875,5,100,40);
+        this.add(botonLapiz);
+        botonRectangulos = new JButton("Rectangulos");
+        botonRectangulos.setBounds(775,5,100,40);
+        this.add(botonRectangulos);
         eventoOyenteDeRaton();
     }
     private void eventoOyenteDeRaton(){
@@ -191,11 +199,74 @@ public class PanelPrincipal extends JPanel    {
             public void mouseExited(MouseEvent e) {
                 
             }
+           
+            
+        };
+        MouseListener botLapiz = new MouseListener(){
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                                System.out.println("boton apretado");
+                                lapiz.estado = true;
+                rectangulos.estado = false;
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+               
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {   
+                }
+                
+            @Override
+            public void mouseExited(MouseEvent e) {
+                
+            }
+            
+        };
+        MouseListener botRectangulos = new MouseListener(){
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                  System.out.println("boton apretado");
+                lapiz.estado = false;
+                rectangulos.estado = true;
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+               
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {    
+                }
+                
+            @Override
+            public void mouseExited(MouseEvent e) {
+                
+            }
+           
             
         };
         
-        botonLimpiar.addMouseListener(limpiar);
+     botonLimpiar.addMouseListener(limpiar);
         botonAchicar.addMouseListener(achicar);
         botonAgrandar.addMouseListener(agrandar);
+        
+        botonLapiz.addMouseListener(botLapiz);
+        botonRectangulos.addMouseListener(botRectangulos);
     }
 }
