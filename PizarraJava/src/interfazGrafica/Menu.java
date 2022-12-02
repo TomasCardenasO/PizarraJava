@@ -1,13 +1,21 @@
 package interfazGrafica;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
-
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+/**
+ * Menu de la aplicacion, donde se accede a todas las funciones.
+ * @author Benjamin Puerta
+ * @version version 1, 02 de Diciembre de 2022
+ * @see Ventana
+ */
 public class Menu extends JMenuBar  {
     private JMenu archivo, color, lapiz, goma, figuras, pizarra;
     private JMenuItem guardar, guardarcomo, cargarpizarra, negro, azul, rojo, verde, lapizpequeño, lapizmediano, lapizgrande, gomapequeña, gomamediana, gomagrande, borrartodo, rectangulo, circulo, linea, triangulo, pizarrasiguiente, pizarraanterior, eliminarpizarra;
-    
+/**
+ * En constructor se crean todos los botones de Menu.
+ * @param v Ventana a la que se adhiere Menu.
+ */
     public Menu(Ventana v) {
         v.setJMenuBar(this); //Se le asigna este menu a la ventana
         
