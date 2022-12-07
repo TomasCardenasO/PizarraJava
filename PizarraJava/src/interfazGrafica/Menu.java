@@ -6,7 +6,6 @@ import javax.swing.JMenuItem;
 /**
  * Menu de la aplicacion, donde se accede a todas las funciones.
  * @author Benjamin Puerta
- * @version version 1, 02 de Diciembre de 2022
  * @see Ventana
  */
 public class Menu extends JMenuBar  {
