@@ -9,7 +9,7 @@ import java.awt.event.MouseEvent;
  * @author Dreyko Paredes
  * @see Pizarra
  */
-public class Rectangulos {
+public class Lineas {
     private int x, y;
     private Pizarra pizarraActual;
 /** Es el interruptor que nos permite o no dibujar rectangulos*/
@@ -19,7 +19,7 @@ public class Rectangulos {
  * un boton activará la opción
  * @param p Pizarra en la que se dibujarán los rectangulos.
  */
-    public Rectangulos(Pizarra p) {
+    public Lineas(Pizarra p) {
         pizarraActual = p;
         this.x = 0;
         this.y = 0;
@@ -34,7 +34,7 @@ public class Rectangulos {
                     if(e.getModifiersEx() == 1024){ //Si el click es del boton izquierdo...
                         pizarraActual.g = pizarraActual.getGraphics();
                         pizarraActual.g.setColor(Color.BLACK);  
-                        pizarraActual.g.drawRect(x, y, e.getX() - x, e.getY() - y);
+                            pizarraActual.g.drawLine(x, y, e.getX(), e.getY());
                         pizarraActual.repaint();
                     }
                 }
@@ -51,8 +51,8 @@ public class Rectangulos {
             public void mouseReleased(MouseEvent e) {
                 if(estado == true) {
                     //Se crea un arreglo con las dimensiones del rectangulo pedidas y se agrega a la pizarra para que este lo pinte
-                    int[] newRect = {x, y, e.getX() - x, e.getY() - y};
-                    pizarraActual.rectangulos.add(newRect);
+                    int[] newLine = {x, y, e.getX(), e.getY()};
+                    pizarraActual.lineas.add(newLine);
                     pizarraActual.repaint();
                 }
             }   

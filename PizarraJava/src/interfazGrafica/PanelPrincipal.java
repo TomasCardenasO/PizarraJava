@@ -1,6 +1,7 @@
 package interfazGrafica;
 
 import DrawingTools.Lapiz;
+import DrawingTools.Lineas;
 import DrawingTools.Rectangulos;
 import java.util.ArrayList;
 import javax.swing.JPanel;
@@ -23,6 +24,7 @@ public class PanelPrincipal extends JPanel    {
     private int cantidadPizarras; //Se usara para desplegar la cantidad de pizarras en pantalla
     private Lapiz lapiz;
     private Rectangulos rectangulos;
+    private Lineas lineas;
 /**
  * En constructor se crea el arreglo de pizarras con una pizarra inicial.
  * Se configura el layout en null y el color gris,
@@ -43,6 +45,7 @@ public class PanelPrincipal extends JPanel    {
         cantidadPizarras = pizarras.size();
         lapiz = new Lapiz(pizarraActual);
         rectangulos = new Rectangulos(pizarraActual);
+        lineas = new Lineas(pizarraActual);
     }
 /**
  * Hace que la pizarra que sigue se muestre en pantalla.

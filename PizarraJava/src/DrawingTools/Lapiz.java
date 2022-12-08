@@ -4,6 +4,7 @@ import interfazGrafica.Pizarra;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.LinkedList;
 /**
  * Herramienta para dibujar trazos.
  * @author Dreyko Paredes
@@ -27,11 +28,13 @@ public class Lapiz {
         MouseAdapter adapter = new MouseAdapter() {
             @Override
             public void mouseDragged(MouseEvent e) { 
-                pizarraActual.g = pizarraActual.getGraphics();
                 if(estado == true){
                     if(e.getModifiersEx() == 1024) {
-                        pizarraActual.g.setColor(Color.BLACK);  
-                        pizarraActual.g.fillOval(e.getX(),e.getY(),tamanoL,tamanoL);
+                        pizarraActual.P.GuardarPuntos(e.getX(), e.getY());
+                        pizarraActual.repaint();
+                     
+                        
+
                     }
                 } else if(e.getModifiersEx() == 4096) {  
                     pizarraActual.g.setColor(Color.WHITE);  
@@ -41,11 +44,14 @@ public class Lapiz {
             public void mouseClicked(MouseEvent e) {
                 pizarraActual.g = pizarraActual.getGraphics();
                 pizarraActual.g.setColor(Color.BLACK);  
-                pizarraActual.g.fillOval(e.getX(), e.getY(), tamanoL, tamanoL);
-        
+                pizarraActual.g.fillOval(e.getX() - tamanoL/2,e.getY() - tamanoL/2, tamanoL, tamanoL);
+
+                    
             }
         };    
         pizarraActual.addMouseListener(adapter);
         pizarraActual.addMouseMotionListener(adapter);
     }
 }
+
+
