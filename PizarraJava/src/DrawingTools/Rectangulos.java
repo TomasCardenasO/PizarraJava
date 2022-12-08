@@ -10,7 +10,7 @@ import java.awt.event.MouseEvent;
  * @see Pizarra
  */
 public class Rectangulos {
-    private int x = 0, y = 0;
+    private int x, y;
     private Pizarra pizarraActual;
 /** Es el interruptor que nos permite o no dibujar rectangulos*/
     public Boolean estado;
@@ -21,6 +21,8 @@ public class Rectangulos {
  */
     public Rectangulos(Pizarra p) {
         pizarraActual = p;
+        this.x = 0;
+        this.y = 0;
         estado = false;
         eventoOyenteDeRaton();
     }
@@ -29,23 +31,30 @@ public class Rectangulos {
             @Override
             public void mouseDragged(MouseEvent e) { 
                 if(estado == true){
-                    pizarraActual.g = pizarraActual.getGraphics();
-                    if(e.getModifiersEx() == 1024){
+                    if(e.getModifiersEx() == 1024){ //Si el click es del boton izquierdo...
                         pizarraActual.g = pizarraActual.getGraphics();
                         pizarraActual.g.setColor(Color.BLACK);  
-                        pizarraActual.g.fillRect(x, y, e.getX() - x, e.getY() - y);
+                        pizarraActual.g.drawRect(x, y, e.getX() - x, e.getY() - y);
+                        pizarraActual.repaint();
                     }
                 }
             }
+            @Override
             public void mousePressed(MouseEvent e) {
-                pizarraActual.g = pizarraActual.getGraphics();
-                x = e.getX();
-                y = e.getY();
-                pizarraActual.g.setColor(Color.BLACK);  
-                pizarraActual.g.fillRect(x, y, 5, 5);
+                if(estado == true) {
+                //Cada vez que se presione un click se guardaran esas coordenadas iniciales
+                    x = e.getX();
+                    y = e.getY();
+                }
             }
-            public void mouseReleased(MouseEvent e){
-            
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                if(estado == true) {
+                    //Se crea un arreglo con las dimensiones del rectangulo pedidas y se agrega a la pizarra para que este lo pinte
+                    int[] newRect = {x, y, e.getX() - x, e.getY() - y};
+                    pizarraActual.rectangulos.add(newRect);
+                    pizarraActual.repaint();
+                }
             }   
         };
         pizarraActual.addMouseListener(adapter);

@@ -39,13 +39,11 @@ public class Lapiz {
                 }
             }
             public void mouseClicked(MouseEvent e) {
-      
+                pizarraActual.g = pizarraActual.getGraphics();
+                pizarraActual.g.setColor(Color.BLACK);  
+                pizarraActual.g.fillOval(e.getX(), e.getY(), tamanoL, tamanoL);
         
             }
-            public void mouseReleased(MouseEvent e) {
-            
-            }   
-   
         };    
         pizarraActual.addMouseListener(adapter);
         pizarraActual.addMouseMotionListener(adapter);
