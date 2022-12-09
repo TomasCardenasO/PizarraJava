@@ -48,12 +48,15 @@ public class Lineas {
                 }
             }
             @Override
-            public void mouseReleased(MouseEvent e) {
+                public void mouseReleased(MouseEvent e) {
                 if(estado == true) {
-                    //Se crea un arreglo con las dimensiones del punto inicial y final de la linea
-                    int[] newLine = {x, y, e.getX(), e.getY()};
-                    pizarraActual.lineas.add(newLine);
-                    pizarraActual.repaint();
+                   // System.out.println(e.getModifiersEx());  esto nos permite saber cual es el valor que manejan los botones
+                    if(e.getModifiersEx() == 0){
+                        //Se crea un arreglo con las dimensiones del punto inicial y final de la linea
+                        int[] newLine = {x, y, e.getX(), e.getY()};
+                        pizarraActual.lineas.add(newLine);
+                        pizarraActual.repaint();
+                    }
                 }
             }   
         };

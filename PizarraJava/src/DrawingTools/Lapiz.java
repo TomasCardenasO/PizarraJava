@@ -21,7 +21,7 @@ public class Lapiz {
     public Lapiz(Pizarra p){ 
         pizarraActual = p;
         eventoOyenteDeRaton();
-        estado = true;
+        estado = false;
     }
     /*Creamos un mouse adapter el cual escucha los eventos del mouse y los traduce a trazos de lapiz (con el click izquierdo)
     y el borrado de la goma (click derecho), luego, asignamos este adapter a nuestra pizarra*/
