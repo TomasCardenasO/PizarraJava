@@ -1,5 +1,10 @@
 package interfazGrafica;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
@@ -8,16 +13,19 @@ import javax.swing.JMenuItem;
  * @author Benjamin Puerta
  * @see Ventana
  */
-public class Menu extends JMenuBar  {
+public class Menu extends JMenuBar {
     private JMenu archivo, color, lapiz, goma, figuras, pizarra;
     private JMenuItem guardar, guardarcomo, cargarpizarra, negro, azul, rojo, verde, lapizpequeño, lapizmediano, lapizgrande, gomapequeña, gomamediana, gomagrande, borrartodo, rectangulo, circulo, linea, triangulo, pizarrasiguiente, pizarraanterior, eliminarpizarra;
-/**
+    private ActionListener elActionListener;
+    private PanelPrincipal PanelPP;
+/** 
  * En constructor se crean todos los botones de Menu.
  * @param v Ventana a la que se adhiere Menu.
  */
     public Menu(Ventana v) {
+        PanelPP = v.getPanelPrincipal();
         v.setJMenuBar(this); //Se le asigna este menu a la ventana
-        
+        funciones();
         archivo = new JMenu("Archivo");
         this.add(archivo);
         guardar = new JMenuItem("Guardar");
@@ -76,5 +84,38 @@ public class Menu extends JMenuBar  {
         eliminarpizarra = new JMenuItem("Eliminar Pizarra");
         pizarra.add(eliminarpizarra);
         
+        lapizmediano.addActionListener(elActionListener );
+        linea.addActionListener(elActionListener );        
+        rectangulo.addActionListener(elActionListener );
+
+
     }
-}
+    
+    private void funciones(){
+        elActionListener = new ActionListener(){       //mouselistener/motionlistener y adapter pueden ser integrados, pero es más engorroso que esto
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (e.getSource()==lapizmediano) {     //getsourse identifica qué "objeto" estamos apretando
+                PanelPP.lapiz();
+                System.out.println("lapiz");
+            }
+      
+            if (e.getSource()==rectangulo) {
+                PanelPP.rectangulos();
+                System.out.println("rectangulo");
+
+            }
+            if (e.getSource()==linea) {
+               PanelPP.lineas();                
+               System.out.println("lineas");
+
+               
+            }
+        }
+        };
+       
+    }
+    
+    
+
+ }

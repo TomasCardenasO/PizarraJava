@@ -2,6 +2,7 @@ package interfazGrafica;
 
 import javax.swing.JFrame;
 import java.awt.BorderLayout;
+import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 /**
  * Es la ventana principal del proyecto.
  * @author Tomas Cardenas
@@ -9,7 +10,7 @@ import java.awt.BorderLayout;
  * @see Menu
  */
 public class Ventana extends JFrame {
-    private final PanelPrincipal PANEL_PRINCIPAL; //Se declara así porque es una constante
+    private PanelPrincipal PANEL_PRINCIPAL; //Se declara así porque es una constante
     private final static int ANCHO_VENTANA = 1300;
     private final static int LARGO_VENTANA = 700;
     private final Menu MENU;
@@ -28,5 +29,9 @@ public class Ventana extends JFrame {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setSize(ANCHO_VENTANA, LARGO_VENTANA);
         this.setVisible(true);
+    }
+   
+    PanelPrincipal getPanelPrincipal() {     //para que panel principal no sea public
+         return PANEL_PRINCIPAL;
     }
 }
