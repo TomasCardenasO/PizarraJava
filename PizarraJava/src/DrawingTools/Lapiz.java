@@ -11,6 +11,7 @@ import java.awt.event.MouseEvent;
  */
 public class Lapiz { 
     private int tamanoL = 20, tamanoG = 20; //Tamaño de Lapiz y tamaño de Goma, tal vez después se tengan que dividir en 2 clases
+    private Color color;
     private boolean estado;
     private Pizarra pizarraActual; 
 /**
@@ -19,6 +20,7 @@ public class Lapiz {
  */
     public Lapiz(Pizarra p){ 
         pizarraActual = p;
+        color = Color.black;
         eventoOyenteDeRaton();
         estado = true;
     }
@@ -28,38 +30,45 @@ public class Lapiz {
         MouseAdapter adapter = new MouseAdapter() {
             @Override
             public void mouseDragged(MouseEvent e) { 
-                pizarraActual.g = pizarraActual.getGraphics();
                 if(estado == true){
                     if(e.getModifiersEx() == 1024){ //Si el click es del boton izquierdo...
-                         pizarraActual.g.setColor(Color.BLACK);  
-                            pizarraActual.g.fillOval(e.getX()-10, e.getY()-10, 20,20);
-                        int[] newOval = {e.getX()-10, e.getY()-10, 20,20};
+                        int[] newOval = {e.getX()-10, e.getY()-10, tamanoL,tamanoL};
                         pizarraActual.dibujos.add(newOval);
+                        pizarraActual.colorDibujos.add(color);
+                        pizarraActual.repaint();
                     }
                 }
             }
             @Override
             public void mousePressed(MouseEvent e) {
-                pizarraActual.g = pizarraActual.getGraphics();
                 if(estado == true){
                     if(e.getModifiersEx() == 1024){ //Si el click es del boton izquierdo...
-                         pizarraActual.g.setColor(Color.BLACK);  
-                            pizarraActual.g.fillOval(e.getX()-10, e.getY()-10, 20,20);
-                        int[] newOval = {e.getX()-10, e.getY()-10, 20,20};
+                        int[] newOval = {e.getX()-10, e.getY()-10, tamanoL,tamanoL};
                         pizarraActual.dibujos.add(newOval);
+                        pizarraActual.colorDibujos.add(color);
+                        pizarraActual.repaint();
                     }
                 }
             }   
-        };    
-        
-            
-        
+        }; 
         pizarraActual.addMouseListener(adapter);
         pizarraActual.addMouseMotionListener(adapter);
     }
     public void cambiarestado(boolean estado){
         this.estado = estado;
         
+    }
+    public void lapizNegro() {
+        color = Color.black;
+    }
+    public void lapizAzul() {
+        color = Color.blue;
+    }
+    public void lapizRojo() {
+        color = Color.red;
+    }
+    public void lapizVerde() {
+        color = Color.green;
     }
 }
 

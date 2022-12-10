@@ -34,7 +34,7 @@ public class Lineas {
                     if(e.getModifiersEx() == 1024){ //Si el click es del boton izquierdo...
                         pizarraActual.g = pizarraActual.getGraphics();
                         pizarraActual.g.setColor(Color.BLACK);  
-                            pizarraActual.g.drawLine(x, y, e.getX(), e.getY());
+                        pizarraActual.g.drawLine(x, y, e.getX(), e.getY());
                         pizarraActual.repaint();
                     }
                 }

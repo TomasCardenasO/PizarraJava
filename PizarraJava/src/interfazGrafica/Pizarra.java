@@ -15,6 +15,7 @@ public class Pizarra extends JPanel {
     public ArrayList<int[]> rectangulos; //arreglo para rectangulos
     public ArrayList<int[]> lineas;       //para lineas
     public ArrayList<int[]> dibujos;        //para lapiz          próximamente podríamos unirlos en un solo arreglo
+    public ArrayList<Color> colorDibujos;
 /** Descripcion por agregar.*/
     public Graphics g;
    
@@ -23,6 +24,7 @@ public class Pizarra extends JPanel {
         rectangulos = new ArrayList<>();
         lineas = new ArrayList<>();
         dibujos = new ArrayList<>();
+        colorDibujos = new ArrayList<>();
         this.setBackground(Color.white);
         this.setSize(ANCHO_PIZARRA, LARGO_PIZARRA);
         this.setLocation(10, 20);
@@ -41,10 +43,9 @@ public class Pizarra extends JPanel {
             g.drawLine(lineas.get(i)[0], lineas.get(i)[1], lineas.get(i)[2], lineas.get(i)[3]);
         }
          for(int i = 0; i < dibujos.size(); i++) {
+            g.setColor(colorDibujos.get(i)); 
             g.fillOval(dibujos.get(i)[0], dibujos.get(i)[1], dibujos.get(i)[2], dibujos.get(i)[3]);
-        }
-       
-        
+        }      
     }
 }
 

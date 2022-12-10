@@ -16,13 +16,14 @@ import java.awt.Color;
  * @see Pizarra
  * @see Lapiz
  * @see Rectangulos
+ * @see Lineas
  */
 public class PanelPrincipal extends JPanel    {
     private ArrayList<Pizarra> pizarras;
     private Pizarra pizarraActual;
     private int indicePizarraActual;
     private int cantidadPizarras; //Se usara para desplegar la cantidad de pizarras en pantalla
-    private Lapiz lapiz;
+    public Lapiz lapiz;
     private Rectangulos rectangulos;
     private Lineas lineas;
 /**
@@ -43,7 +44,7 @@ public class PanelPrincipal extends JPanel    {
         this.add(pizarraActual);
         
         cantidadPizarras = pizarras.size();
-       lapiz = new Lapiz(pizarraActual);
+        lapiz = new Lapiz(pizarraActual);
         rectangulos = new Rectangulos(pizarraActual);
         lineas = new Lineas(pizarraActual);
     }
@@ -105,19 +106,18 @@ public class PanelPrincipal extends JPanel    {
         super.paint(g); 
     }
     public void lapiz(){          
-         lapiz.cambiarestado(true);
+        lapiz.cambiarestado(true);
         rectangulos.cambiarestado(false);
         lineas.cambiarestado(false);
        
     }
     public void rectangulos(){
-         lapiz.cambiarestado(false);
+        lapiz.cambiarestado(false);
         rectangulos.cambiarestado(true);
         lineas.cambiarestado(false);
         
     }
-    public void lineas(){   
-        
+    public void lineas(){           
         lapiz.cambiarestado(false);
         rectangulos.cambiarestado(false);
         lineas.cambiarestado(true);
