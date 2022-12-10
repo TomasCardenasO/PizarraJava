@@ -10,7 +10,7 @@ import java.awt.event.MouseEvent;
  * @see Pizarra
  */
 public class Lapiz { 
-    private int tamanoL = 20, tamanoG = 20; //Tamaño de Lapiz y tamaño de Goma, tal vez después se tengan que dividir en 2 clases
+    private int tamanoL = 20; //Tamaño de Lapiz y tamaño de Goma, tal vez después se tengan que dividir en 2 clases
     private Color color;
     private boolean estado;
     private Pizarra pizarraActual; 
@@ -69,6 +69,16 @@ public class Lapiz {
     }
     public void lapizVerde() {
         color = Color.green;
+    }
+    
+    public void lapizpequeño() {
+        tamanoL = 10;
+    }
+    public void lapizmediano() {
+        tamanoL = 20;
+    }
+    public void lapizgrande() {
+        tamanoL = 30;
     }
 }
 

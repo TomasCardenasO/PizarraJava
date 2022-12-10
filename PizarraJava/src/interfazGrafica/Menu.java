@@ -11,7 +11,7 @@ import javax.swing.JMenuItem;
  * @see Ventana
  */
 public class Menu extends JMenuBar {
-    private JMenu archivo, color, lapiz, goma, figuras, pizarra;
+    private JMenu archivo, color, lapiz, goma, figuras, pizarra, tamano;
     private JMenuItem guardar, guardarcomo, cargarpizarra, negro, azul, rojo, verde, lapizpequeño, lapizmediano, lapizgrande, gomapequeña, gomamediana, gomagrande, borrartodo, rectangulo, circulo, linea, pizarrasiguiente, pizarraanterior, eliminarpizarra;
     private ActionListener elActionListener;
     private PanelPrincipal PanelPP;
@@ -35,8 +35,23 @@ public class Menu extends JMenuBar {
         cargarpizarra.addActionListener(elActionListener);
         archivo.add(cargarpizarra);
         
+        lapiz = new JMenu("Lapiz");
+        this.add(lapiz);
+        
+        tamano = new JMenu("Tamaño");
+        lapiz.add(tamano);
+        lapizpequeño = new JMenuItem("Lapiz Pequeño");
+        lapizpequeño.addActionListener(elActionListener);
+        tamano.add(lapizpequeño);
+        lapizmediano = new JMenuItem("Lapiz Mediano");
+        lapizmediano.addActionListener(elActionListener);
+        tamano.add(lapizmediano);
+        lapizgrande = new JMenuItem("Lapiz Grande");
+        lapizgrande.addActionListener(elActionListener);
+        tamano.add(lapizgrande);
+        
         color = new JMenu("Color");
-        this.add(color);
+        lapiz.add(color);
         negro = new JMenuItem("Negro");
         negro.addActionListener(elActionListener);
         color.add(negro);
@@ -49,18 +64,6 @@ public class Menu extends JMenuBar {
         verde = new JMenuItem("Verde");
         verde.addActionListener(elActionListener);
         color.add(verde); 
-        
-        lapiz = new JMenu("Lapiz");
-        this.add(lapiz);
-        lapizpequeño = new JMenuItem("Lapiz Pequeño");
-        lapizpequeño.addActionListener(elActionListener);
-        lapiz.add(lapizpequeño);
-        lapizmediano = new JMenuItem("LapizMediano");
-        lapizmediano.addActionListener(elActionListener);
-        lapiz.add(lapizmediano);
-        lapizgrande = new JMenuItem("Lapiz Lapiz");
-        lapizgrande.addActionListener(elActionListener);
-        lapiz.add(lapizgrande);
         
         goma = new JMenu("Goma");
         this.add(goma);
@@ -98,14 +101,23 @@ public class Menu extends JMenuBar {
         eliminarpizarra.addActionListener(elActionListener);
         pizarra.add(eliminarpizarra);
         
-
-
     }
     
     private void funciones(){
         elActionListener = new ActionListener(){       //mouselistener/motionlistener y adapter pueden ser integrados, pero es más engorroso que esto
         @Override
         public void actionPerformed(ActionEvent e) {
+            if(e.getSource() == lapizpequeño){
+                PanelPP.lapiz.lapizpequeño();
+            }
+            if(e.getSource() == lapizmediano){
+                PanelPP.lapiz.lapizmediano();
+            }
+            if(e.getSource() == lapizgrande){
+                PanelPP.lapiz.lapizgrande();
+            }
+            
+            
             if(e.getSource() == negro) {
                 PanelPP.lapiz.lapizNegro();
             }
@@ -118,9 +130,8 @@ public class Menu extends JMenuBar {
             if(e.getSource() == verde) {
                 PanelPP.lapiz.lapizVerde();
             }
-            if (e.getSource()==lapizmediano) {     //getsourse identifica qué "objeto" estamos apretando
-                PanelPP.lapiz();
-            }
+            
+             
             if (e.getSource()==rectangulo) {
                 PanelPP.rectangulos();
             }
