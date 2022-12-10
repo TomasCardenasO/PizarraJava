@@ -5,7 +5,7 @@ import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 /**
- * Herramienta para crear rectangulos en pizarra.
+ * Herramienta para crear lineas rectas en pizarra.
  * @author Dreyko Paredes
  * @see Pizarra
  */
@@ -34,7 +34,7 @@ public class Lineas {
                     if(e.getModifiersEx() == 1024){ //Si el click es del boton izquierdo...
                         pizarraActual.g = pizarraActual.getGraphics();
                         pizarraActual.g.setColor(Color.BLACK);  
-                            pizarraActual.g.drawLine(x, y, e.getX(), e.getY());
+                        pizarraActual.g.drawLine(x, y, e.getX(), e.getY());
                         pizarraActual.repaint();
                     }
                 }
