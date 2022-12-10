@@ -3,6 +3,7 @@ package DrawingTools;
 import interfazGrafica.Pizarra;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Color;
 /**
  * Herramienta para dibujar trazos.
  * @author Dreyko Paredes
