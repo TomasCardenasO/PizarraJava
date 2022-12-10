@@ -12,7 +12,7 @@ import javax.swing.JMenuItem;
  */
 public class Menu extends JMenuBar {
     private JMenu archivo, color, lapiz, goma, figuras, pizarra, tamano;
-    private JMenuItem guardar, guardarcomo, cargarpizarra, negro, azul, rojo, verde, lapizpequeño, lapizmediano, lapizgrande, gomapequeña, gomamediana, gomagrande, borrartodo, rectangulo, circulo, linea, pizarrasiguiente, pizarraanterior, eliminarpizarra;
+    private JMenuItem guardar, guardarcomo, cargarpizarra, negro, azul, rojo, verde, lapizpequeño, lapizmediano, lapizgrande, gomapequeña, gomamediana, gomagrande, borrartodo, rectangulo, circulo, linea, pizarrasiguiente, pizarraanterior, anadirpizarra, eliminarpizarra;
     private ActionListener elActionListener;
     private PanelPrincipal PanelPP;
 /** 
@@ -97,6 +97,9 @@ public class Menu extends JMenuBar {
         pizarraanterior = new JMenuItem("Pizarra Anterior");
         pizarraanterior.addActionListener(elActionListener);
         pizarra.add(pizarraanterior);
+        anadirpizarra = new JMenuItem("Añadir Pizarra");
+        anadirpizarra.addActionListener(elActionListener);
+        pizarra.add(anadirpizarra);
         eliminarpizarra = new JMenuItem("Eliminar Pizarra");
         eliminarpizarra.addActionListener(elActionListener);
         pizarra.add(eliminarpizarra);
@@ -137,6 +140,19 @@ public class Menu extends JMenuBar {
             }
             if (e.getSource()==linea) {
                PanelPP.lineas();                 
+            }
+            
+            if(e.getSource() == pizarrasiguiente) {
+                PanelPP.siguientePizarra();
+            }
+            if(e.getSource() == pizarraanterior) {
+                PanelPP.pizarraAnterior();
+            }
+            if(e.getSource() == anadirpizarra) {
+                PanelPP.añadirPizarra();
+            }
+            if(e.getSource() == eliminarpizarra) {
+                PanelPP.eliminarPizarra();
             }
         }
         };
