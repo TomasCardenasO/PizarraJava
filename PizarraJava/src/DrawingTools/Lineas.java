@@ -5,7 +5,7 @@ import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 /**
- * Herramienta para crear rectangulos en pizarra.
+ * Herramienta para crear lineas rectas en pizarra.
  * @author Dreyko Paredes
  * @see Pizarra
  */

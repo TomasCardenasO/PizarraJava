@@ -45,9 +45,6 @@ public class Rectangulos {
                 //Cada vez que se presione un click se guardaran esas coordenadas iniciales
                     x = e.getX();
                     y = e.getY();
-                    pizarraActual.g = pizarraActual.getGraphics();
-                    pizarraActual.g.setColor(Color.BLACK);  
-                    pizarraActual.g.drawRect(x, y, e.getX() - x, e.getY() - y);
                 }
             }
             @Override
