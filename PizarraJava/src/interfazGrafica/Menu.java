@@ -120,18 +120,12 @@ public class Menu extends JMenuBar {
             }
             if (e.getSource()==lapizmediano) {     //getsourse identifica qué "objeto" estamos apretando
                 PanelPP.lapiz();
-                System.out.println("lapiz");
             }
             if (e.getSource()==rectangulo) {
                 PanelPP.rectangulos();
-                System.out.println("rectangulo");
-
             }
             if (e.getSource()==linea) {
-               PanelPP.lineas();                
-               System.out.println("lineas");
-
-               
+               PanelPP.lineas();                 
             }
         }
         };
