@@ -1,40 +1,37 @@
 package DrawingTools;
 
 import interfazGrafica.Pizarra;
+import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.Color;
+
 /**
- * Herramienta para dibujar trazos.
- * @author Dreyko Paredes
+ * Herramienta para borrar las pizarras.
+ * @author Benjamin Puerta
  * @see Pizarra
  */
-public class Lapiz { 
-    private int tamanoL = 20; //Tamaño de Lapiz
-    private Color color;
+public class Goma {
+    private int tamanoG = 20; //Tamaño goma
     private boolean estado;
     private Pizarra pizarraActual; 
 /**
- * Define una pizarra y la configura para que se pueda rayar.
- * @param p Recibe la pizarra sobre la que se dibujará.
+ * Define una pizarra y la configura para que se pueda borrar
+ * @param p Recibe la pizarra sobre la que se borrará
  */
-    public Lapiz(Pizarra p){ 
+    public Goma(Pizarra p){ 
         pizarraActual = p;
-        color = Color.black;
         eventoOyenteDeRaton();
-        estado = true;
+        estado = false;
     }
-    /*Creamos un mouse adapter el cual escucha los eventos del mouse y los traduce a trazos de lapiz (con el click izquierdo)
-    y el borrado de la goma (click derecho), luego, asignamos este adapter a nuestra pizarra*/
     private void eventoOyenteDeRaton(){
         MouseAdapter adapter = new MouseAdapter() {
             @Override
             public void mouseDragged(MouseEvent e) { 
                 if(estado == true){
                     if(e.getModifiersEx() == 1024){ //Si el click es del boton izquierdo...
-                        int[] newOval = {e.getX()-10, e.getY()-10, tamanoL,tamanoL};
+                        int[] newOval = {e.getX()-10, e.getY()-10, tamanoG,tamanoG};
                         pizarraActual.dibujos.add(newOval);
-                        pizarraActual.colorDibujos.add(color);
+                        pizarraActual.colorDibujos.add(Color.white);
                         pizarraActual.repaint();
                     }
                 }
@@ -43,9 +40,9 @@ public class Lapiz {
             public void mousePressed(MouseEvent e) {
                 if(estado == true){
                     if(e.getModifiersEx() == 1024){ //Si el click es del boton izquierdo...
-                        int[] newOval = {e.getX()-10, e.getY()-10, tamanoL,tamanoL};
+                        int[] newOval = {e.getX()-10, e.getY()-10, tamanoG,tamanoG};
                         pizarraActual.dibujos.add(newOval);
-                        pizarraActual.colorDibujos.add(color);
+                        pizarraActual.colorDibujos.add(Color.white);
                         pizarraActual.repaint();
                     }
                 }
@@ -56,28 +53,15 @@ public class Lapiz {
     }
     public void cambiarestado(boolean estado){
         this.estado = estado;
+    }    
+    public void gomapequeña() {
+        tamanoG = 10;
     }
-    public void lapizNegro() {
-        color = Color.black;
+    public void gomamediana() {
+        tamanoG = 20;
     }
-    public void lapizAzul() {
-        color = Color.blue;
-    }
-    public void lapizRojo() {
-        color = Color.red;
-    }
-    public void lapizVerde() {
-        color = Color.green;
-    }
-    
-    public void lapizpequeño() {
-        tamanoL = 10;
-    }
-    public void lapizmediano() {
-        tamanoL = 20;
-    }
-    public void lapizgrande() {
-        tamanoL = 30;
+    public void gomagrande() {
+        tamanoG = 30;
     }
     
     public void cambiarPizarra(Pizarra p) {
@@ -85,5 +69,3 @@ public class Lapiz {
         eventoOyenteDeRaton();
     }
 }
-
-

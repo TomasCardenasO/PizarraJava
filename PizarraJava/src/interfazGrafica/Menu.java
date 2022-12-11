@@ -14,8 +14,8 @@ import javax.swing.ButtonGroup;
  */
 public class Menu extends JMenuBar {
     private JMenu archivo, color, lapiz, goma, figuras, pizarra, tamano;
-    private JMenuItem guardar, guardarcomo, cargarpizarra, gomapequeña, gomamediana, gomagrande, borrartodo, rectangulo, circulo, linea, pizarrasiguiente, pizarraanterior, anadirpizarra, eliminarpizarra;
-    private JRadioButtonMenuItem lapiznegro, lapizazul, lapizrojo, lapizverde, lapizpequeño, lapizmediano, lapizgrande;
+    private JMenuItem guardar, guardarcomo, cargarpizarra, borrartodo, rectangulo, circulo, linea, pizarrasiguiente, pizarraanterior, anadirpizarra, eliminarpizarra;
+    private JRadioButtonMenuItem lapiznegro, lapizazul, lapizrojo, lapizverde, lapizpequeño, lapizmediano, lapizgrande, gomapequeña, gomamediana, gomagrande;
     private ActionListener elActionListener;
     private PanelPrincipal PanelPP;
 /** 
@@ -79,15 +79,19 @@ public class Menu extends JMenuBar {
         
         goma = new JMenu("Goma");
         this.add(goma);
-        gomapequeña = new JMenuItem("Goma Pequeña");
+        ButtonGroup tamanoGoma = new ButtonGroup();
+        gomapequeña = new JRadioButtonMenuItem("Goma Pequeña");
         gomapequeña.addActionListener(elActionListener);
         goma.add(gomapequeña);
-        gomamediana = new JMenuItem("Goma Mediana");
+        tamanoGoma.add(gomapequeña);
+        gomamediana = new JRadioButtonMenuItem("Goma Mediana");
         gomamediana.addActionListener(elActionListener);
         goma.add(gomamediana);
-        gomagrande = new JMenuItem("Goma Grande");
+        tamanoGoma.add(gomamediana);
+        gomagrande = new JRadioButtonMenuItem("Goma Grande");
         gomagrande.addActionListener(elActionListener);
         goma.add(gomagrande);
+        tamanoGoma.add(gomagrande);
         
         figuras = new JMenu("Figuras");
         this.add(figuras);
@@ -149,6 +153,18 @@ public class Menu extends JMenuBar {
                 PanelPP.lapiz.lapizVerde();
             }
             
+            if(e.getSource() == gomapequeña) {
+                PanelPP.goma.gomapequeña();
+                PanelPP.goma();
+            }
+            if(e.getSource() == gomamediana) {
+                PanelPP.goma.gomamediana();
+                PanelPP.goma();
+            }
+            if(e.getSource() == gomagrande) {
+                PanelPP.goma.gomagrande();
+                PanelPP.goma();
+            }
              
             if (e.getSource()==rectangulo) {
                 PanelPP.rectangulos();

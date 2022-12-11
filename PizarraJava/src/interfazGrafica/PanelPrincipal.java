@@ -1,6 +1,7 @@
 package interfazGrafica;
 
 import DrawingTools.Lapiz;
+import DrawingTools.Goma;
 import DrawingTools.Lineas;
 import DrawingTools.Rectangulos;
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ public class PanelPrincipal extends JPanel    {
     private int indicePizarraActual;
     private int cantidadPizarras; //Se usara para desplegar la cantidad de pizarras en pantalla
     public Lapiz lapiz;
+    public Goma goma;
     private Rectangulos rectangulos;
     private Lineas lineas;
 /**
@@ -45,6 +47,7 @@ public class PanelPrincipal extends JPanel    {
         
         cantidadPizarras = pizarras.size();
         lapiz = new Lapiz(pizarraActual);
+        goma = new Goma(pizarraActual);
         rectangulos = new Rectangulos(pizarraActual);
         lineas = new Lineas(pizarraActual);
     }
@@ -61,6 +64,7 @@ public class PanelPrincipal extends JPanel    {
             this.add(pizarraActual);
             this.repaint();
             lapiz.cambiarPizarra(pizarraActual);
+            goma.cambiarPizarra(pizarraActual);
             rectangulos.cambiarPizarra(pizarraActual);
             lineas.cambiarPizarra(pizarraActual);
         }
@@ -78,6 +82,7 @@ public class PanelPrincipal extends JPanel    {
             this.add(pizarraActual);
             this.repaint();
             lapiz.cambiarPizarra(pizarraActual);
+            goma.cambiarPizarra(pizarraActual);
             rectangulos.cambiarPizarra(pizarraActual);
             lineas.cambiarPizarra(pizarraActual);
         }
@@ -113,18 +118,27 @@ public class PanelPrincipal extends JPanel    {
     }
     public void lapiz(){          
         lapiz.cambiarestado(true);
+        goma.cambiarestado(false);
         rectangulos.cambiarestado(false);
         lineas.cambiarestado(false);
        
     }
+    public void goma() {
+        lapiz.cambiarestado(false);
+        goma.cambiarestado(true);
+        rectangulos.cambiarestado(false);
+        lineas.cambiarestado(false);
+    }
     public void rectangulos(){
         lapiz.cambiarestado(false);
+        goma.cambiarestado(false);
         rectangulos.cambiarestado(true);
         lineas.cambiarestado(false);
         
     }
     public void lineas(){           
         lapiz.cambiarestado(false);
+        goma.cambiarestado(false);
         rectangulos.cambiarestado(false);
         lineas.cambiarestado(true);
         
