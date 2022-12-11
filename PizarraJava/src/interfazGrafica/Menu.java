@@ -157,6 +157,10 @@ public class Menu extends JMenuBar {
             if(e.getSource() == eliminarpizarra) {
                 PanelPP.eliminarPizarra();
             }
+            if (e.getSource()==guardarcomo) {
+               GuardarComo captura= new GuardarComo(PanelPP.pizarraActual);     //revisen si afecta en algo esto, nos piden poner en private la pizarraActual de Panel principal, cambiar si da errores y hacer un getter
+               
+            }
         }
         };
        

@@ -20,7 +20,7 @@ import java.awt.Color;
  */
 public class PanelPrincipal extends JPanel    {
     private ArrayList<Pizarra> pizarras;
-    private Pizarra pizarraActual;
+    Pizarra pizarraActual;
     private int indicePizarraActual;
     private int cantidadPizarras; //Se usara para desplegar la cantidad de pizarras en pantalla
     public Lapiz lapiz;
