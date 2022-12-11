@@ -66,4 +66,8 @@ public class Lineas {
         this.estado = estado;
         
     }
+    public void cambiarPizarra(Pizarra p) {
+        pizarraActual = p;
+        eventoOyenteDeRaton();
+    }
 }

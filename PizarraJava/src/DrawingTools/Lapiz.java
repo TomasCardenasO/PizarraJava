@@ -56,7 +56,6 @@ public class Lapiz {
     }
     public void cambiarestado(boolean estado){
         this.estado = estado;
-        
     }
     public void lapizNegro() {
         color = Color.black;
@@ -79,6 +78,11 @@ public class Lapiz {
     }
     public void lapizgrande() {
         tamanoL = 30;
+    }
+    
+    public void cambiarPizarra(Pizarra p) {
+        pizarraActual = p;
+        eventoOyenteDeRaton();
     }
 }
 

@@ -66,4 +66,8 @@ public class Rectangulos {
         this.estado = estado;
         
     }
+    public void cambiarPizarra(Pizarra p) {
+        pizarraActual = p;
+        eventoOyenteDeRaton();
+    }
 }

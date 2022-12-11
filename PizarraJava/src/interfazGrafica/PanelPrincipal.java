@@ -60,6 +60,9 @@ public class PanelPrincipal extends JPanel    {
             pizarraActual = pizarras.get(indicePizarraActual);
             this.add(pizarraActual);
             this.repaint();
+            lapiz.cambiarPizarra(pizarraActual);
+            rectangulos.cambiarPizarra(pizarraActual);
+            lineas.cambiarPizarra(pizarraActual);
         }
     }
 /**
@@ -74,6 +77,9 @@ public class PanelPrincipal extends JPanel    {
             pizarraActual = pizarras.get(indicePizarraActual);
             this.add(pizarraActual);
             this.repaint();
+            lapiz.cambiarPizarra(pizarraActual);
+            rectangulos.cambiarPizarra(pizarraActual);
+            lineas.cambiarPizarra(pizarraActual);
         }
     }
 /**
