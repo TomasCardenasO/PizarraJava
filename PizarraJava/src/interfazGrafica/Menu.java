@@ -169,6 +169,9 @@ public class Menu extends JMenuBar {
             if (e.getSource()==rectangulo) {
                 PanelPP.rectangulos();
             }
+            if(e.getSource() == circulo) {
+                PanelPP.circulos();
+            }
             if (e.getSource()==linea) {
                PanelPP.lineas();                 
             }

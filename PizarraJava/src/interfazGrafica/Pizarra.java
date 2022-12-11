@@ -13,6 +13,7 @@ public class Pizarra extends JPanel {
     private final static int ANCHO_PIZARRA = 1265; //Se declara así porque es una constante
     private final static int LARGO_PIZARRA = 600;
     public ArrayList<int[]> rectangulos; //arreglo para rectangulos
+    public ArrayList<int[]> circulos;     // para circulos
     public ArrayList<int[]> lineas;       //para lineas
     public ArrayList<int[]> dibujos;        //para lapiz          próximamente podríamos unirlos en un solo arreglo
     public ArrayList<Color> colorDibujos;
@@ -22,6 +23,7 @@ public class Pizarra extends JPanel {
 /** Constructor de pizarra en donde definimos el color, tamaño y posicion.*/
     public Pizarra() {
         rectangulos = new ArrayList<>();
+        circulos = new ArrayList<>();
         lineas = new ArrayList<>();
         dibujos = new ArrayList<>();
         colorDibujos = new ArrayList<>();
@@ -38,7 +40,9 @@ public class Pizarra extends JPanel {
         for(int i = 0; i < rectangulos.size(); i++) {
             g.drawRect(rectangulos.get(i)[0], rectangulos.get(i)[1], rectangulos.get(i)[2], rectangulos.get(i)[3]);
         }
-       
+        for(int i = 0; i < circulos.size(); i++) {
+            g.drawOval(circulos.get(i)[0], circulos.get(i)[1], circulos.get(i)[2], circulos.get(i)[3]);
+        }
         for(int i = 0; i < lineas.size(); i++) {
             g.drawLine(lineas.get(i)[0], lineas.get(i)[1], lineas.get(i)[2], lineas.get(i)[3]);
         }
