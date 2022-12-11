@@ -32,8 +32,8 @@ public class Pizarra extends JPanel {
         colorDibujos = new ArrayList<>();
         this.setBackground(Color.white);
         this.setSize(ANCHO_PIZARRA, LARGO_PIZARRA);
+        imagen = new BufferedImage(this.getWidth(),this.getHeight(), BufferedImage.TYPE_INT_ARGB); //generamos las dimensiones de imagen
         this.setLocation(10, 20);
-        imagen = new BufferedImage(this.getWidth(),this.getHeight(), BufferedImage.TYPE_INT_RGB); //generamos las dimensiones de imagen
     }
     @Override
     public void paint(Graphics g) {

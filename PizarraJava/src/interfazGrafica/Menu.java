@@ -1,10 +1,15 @@
 package interfazGrafica;
 
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.filechooser.FileNameExtensionFilter;
 /**
  * Menu de la aplicacion, donde se accede a todas las funciones.
  * @author Benjamin Puerta
@@ -160,6 +165,24 @@ public class Menu extends JMenuBar {
             if (e.getSource()==guardarcomo) {
                GuardarComo captura= new GuardarComo(PanelPP.pizarraActual);     //revisen si afecta en algo esto, nos piden poner en private la pizarraActual de Panel principal, cambiar si da errores y hacer un getter
                
+            }
+                        if (e.getSource()==cargarpizarra) {
+               //Captura captura= new Captura(PanelPP.pizarraActual);
+               String ruta = "";
+               JFileChooser jfilechooser = new JFileChooser();
+               FileNameExtensionFilter filtrado = new FileNameExtensionFilter("JPG, PNG & GIF", "jpg", "png", "gif");
+               jfilechooser.setFileFilter(filtrado);
+               
+               int respuesta = jfilechooser.showOpenDialog(PanelPP.pizarraActual);
+               
+               if(respuesta == JFileChooser.APPROVE_OPTION){
+                   JLabel jlabel = new JLabel();
+                   PanelPP.pizarraActual.add(jlabel);
+                   ruta = jfilechooser.getSelectedFile().getPath();
+                   Image miImagen = new ImageIcon(ruta).getImage();
+                   ImageIcon miIcono =new ImageIcon(miImagen.getScaledInstance(PanelPP.pizarraActual.getWidth(),PanelPP.pizarraActual.getHeight(), Image.SCALE_SMOOTH));
+                   jlabel.setIcon(miIcono);
+               }
             }
         }
         };
