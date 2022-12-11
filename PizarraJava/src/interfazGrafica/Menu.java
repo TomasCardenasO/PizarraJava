@@ -112,12 +112,15 @@ public class Menu extends JMenuBar {
         public void actionPerformed(ActionEvent e) {
             if(e.getSource() == lapizpequeño){
                 PanelPP.lapiz.lapizpequeño();
+                PanelPP.lapiz();
             }
             if(e.getSource() == lapizmediano){
                 PanelPP.lapiz.lapizmediano();
+                PanelPP.lapiz();
             }
             if(e.getSource() == lapizgrande){
                 PanelPP.lapiz.lapizgrande();
+                PanelPP.lapiz();
             }
             
             
