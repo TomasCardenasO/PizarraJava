@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JRadioButtonMenuItem;
+import javax.swing.ButtonGroup;
 /**
  * Menu de la aplicacion, donde se accede a todas las funciones.
  * @author Benjamin Puerta
@@ -12,7 +14,8 @@ import javax.swing.JMenuItem;
  */
 public class Menu extends JMenuBar {
     private JMenu archivo, color, lapiz, goma, figuras, pizarra, tamano;
-    private JMenuItem guardar, guardarcomo, cargarpizarra, negro, azul, rojo, verde, lapizpequeño, lapizmediano, lapizgrande, gomapequeña, gomamediana, gomagrande, borrartodo, rectangulo, circulo, linea, pizarrasiguiente, pizarraanterior, anadirpizarra, eliminarpizarra;
+    private JMenuItem guardar, guardarcomo, cargarpizarra, gomapequeña, gomamediana, gomagrande, borrartodo, rectangulo, circulo, linea, pizarrasiguiente, pizarraanterior, anadirpizarra, eliminarpizarra;
+    private JRadioButtonMenuItem lapiznegro, lapizazul, lapizrojo, lapizverde, lapizpequeño, lapizmediano, lapizgrande;
     private ActionListener elActionListener;
     private PanelPrincipal PanelPP;
 /** 
@@ -40,30 +43,39 @@ public class Menu extends JMenuBar {
         
         tamano = new JMenu("Tamaño");
         lapiz.add(tamano);
-        lapizpequeño = new JMenuItem("Lapiz Pequeño");
+        ButtonGroup tamanoLapiz = new ButtonGroup();
+        lapizpequeño = new JRadioButtonMenuItem("Lapiz Pequeño");
         lapizpequeño.addActionListener(elActionListener);
         tamano.add(lapizpequeño);
-        lapizmediano = new JMenuItem("Lapiz Mediano");
+        tamanoLapiz.add(lapizpequeño);
+        lapizmediano = new JRadioButtonMenuItem("Lapiz Mediano", true);
         lapizmediano.addActionListener(elActionListener);
         tamano.add(lapizmediano);
-        lapizgrande = new JMenuItem("Lapiz Grande");
+        tamanoLapiz.add(lapizmediano);
+        lapizgrande = new JRadioButtonMenuItem("Lapiz Grande");
         lapizgrande.addActionListener(elActionListener);
         tamano.add(lapizgrande);
+        tamanoLapiz.add(lapizgrande);
         
         color = new JMenu("Color");
         lapiz.add(color);
-        negro = new JMenuItem("Negro");
-        negro.addActionListener(elActionListener);
-        color.add(negro);
-        azul = new JMenuItem("Azul");
-        azul.addActionListener(elActionListener);
-        color.add(azul);
-        rojo = new JMenuItem("Rojo");
-        rojo.addActionListener(elActionListener);
-        color.add(rojo);
-        verde = new JMenuItem("Verde");
-        verde.addActionListener(elActionListener);
-        color.add(verde); 
+        ButtonGroup coloresLapiz = new ButtonGroup();
+        lapiznegro = new JRadioButtonMenuItem("Negro", true);
+        lapiznegro.addActionListener(elActionListener);
+        color.add(lapiznegro);
+        coloresLapiz.add(lapiznegro);
+        lapizazul = new JRadioButtonMenuItem("Azul");
+        lapizazul.addActionListener(elActionListener);
+        color.add(lapizazul);
+        coloresLapiz.add(lapizazul);
+        lapizrojo = new JRadioButtonMenuItem("Rojo");
+        lapizrojo.addActionListener(elActionListener);
+        color.add(lapizrojo);
+        coloresLapiz.add(lapizrojo);
+        lapizverde = new JRadioButtonMenuItem("Verde");
+        lapizverde.addActionListener(elActionListener);
+        color.add(lapizverde); 
+        coloresLapiz.add(lapizverde);
         
         goma = new JMenu("Goma");
         this.add(goma);
@@ -124,16 +136,16 @@ public class Menu extends JMenuBar {
             }
             
             
-            if(e.getSource() == negro) {
+            if(e.getSource() == lapiznegro) {
                 PanelPP.lapiz.lapizNegro();
             }
-            if(e.getSource() == azul) {
+            if(e.getSource() == lapizazul) {
                 PanelPP.lapiz.lapizAzul();
             }
-            if(e.getSource() == rojo) {
+            if(e.getSource() == lapizrojo) {
                 PanelPP.lapiz.lapizRojo();
             }
-            if(e.getSource() == verde) {
+            if(e.getSource() == lapizverde) {
                 PanelPP.lapiz.lapizVerde();
             }
             
