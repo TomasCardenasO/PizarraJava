@@ -8,6 +8,7 @@ import DrawingTools.Circulos;
 import umlTools.CuadroUML;
 import umlTools.Agregacion;
 import umlTools.Composicion;
+import umlTools.Herencia;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 import java.awt.Graphics;
@@ -36,6 +37,7 @@ public class PanelPrincipal extends JPanel    {
     private CuadroUML cuadroUML;
     private Agregacion agregacion;
     private Composicion composicion;
+    private Herencia herencia;
 /**
  * En constructor se crea el arreglo de pizarras con una pizarra inicial.
  * Se configura el layout en null y el color gris,
@@ -62,6 +64,7 @@ public class PanelPrincipal extends JPanel    {
         cuadroUML = new CuadroUML(pizarraActual);
         agregacion = new Agregacion(pizarraActual);
         composicion = new Composicion(pizarraActual);
+        herencia = new Herencia(pizarraActual);
     }
 /**
  * Hace que la pizarra que sigue se muestre en pantalla.
@@ -83,6 +86,7 @@ public class PanelPrincipal extends JPanel    {
             lineas.cambiarPizarra(pizarraActual);
             agregacion.cambiarPizarra(pizarraActual);
             composicion.cambiarPizarra(pizarraActual);
+            herencia.cambiarPizarra(pizarraActual);
         }
     }
 /**
@@ -105,6 +109,7 @@ public class PanelPrincipal extends JPanel    {
             cuadroUML.cambiarPizarra(pizarraActual);
             agregacion.cambiarPizarra(pizarraActual);
             composicion.cambiarPizarra(pizarraActual);
+            herencia.cambiarPizarra(pizarraActual);
         }
     }
 /**
@@ -145,6 +150,7 @@ public class PanelPrincipal extends JPanel    {
         cuadroUML.cambiarestado(false);
         agregacion.cambiarestado(false);
         composicion.cambiarestado(false);
+        herencia.cambiarestado(false);
 
        
     }
@@ -157,6 +163,7 @@ public class PanelPrincipal extends JPanel    {
         cuadroUML.cambiarestado(false);
         agregacion.cambiarestado(false);
         composicion.cambiarestado(false);
+        herencia.cambiarestado(false);
 
     }
     public void rectangulos(){
@@ -168,7 +175,7 @@ public class PanelPrincipal extends JPanel    {
         cuadroUML.cambiarestado(false);
         agregacion.cambiarestado(false);
         composicion.cambiarestado(false);
-
+        herencia.cambiarestado(false);
         
     }
     public void circulos(){
@@ -180,7 +187,7 @@ public class PanelPrincipal extends JPanel    {
         cuadroUML.cambiarestado(false);
         agregacion.cambiarestado(false);
         composicion.cambiarestado(false);
-
+        herencia.cambiarestado(false);
         
     }
     public void lineas(){           
@@ -192,7 +199,7 @@ public class PanelPrincipal extends JPanel    {
         cuadroUML.cambiarestado(false);
         agregacion.cambiarestado(false);
         composicion.cambiarestado(false);
-        
+        herencia.cambiarestado(false);
     }
     public void cuadroUML(){           
         lapiz.cambiarestado(false);
@@ -203,6 +210,7 @@ public class PanelPrincipal extends JPanel    {
         cuadroUML.cambiarestado(true);
         agregacion.cambiarestado(false);
         composicion.cambiarestado(false);
+        herencia.cambiarestado(false);
     }
     public void agregacion() {
         lapiz.cambiarestado(false);
@@ -213,6 +221,7 @@ public class PanelPrincipal extends JPanel    {
         cuadroUML.cambiarestado(false);
         agregacion.cambiarestado(true);
         composicion.cambiarestado(false);
+        herencia.cambiarestado(false);
     }
     public void composicion() {
         lapiz.cambiarestado(false);
@@ -223,5 +232,17 @@ public class PanelPrincipal extends JPanel    {
         cuadroUML.cambiarestado(false);
         agregacion.cambiarestado(false);
         composicion.cambiarestado(true);
+        herencia.cambiarestado(false);
+    }
+    public void herencia() {
+        lapiz.cambiarestado(false);
+        goma.cambiarestado(false);
+        rectangulos.cambiarestado(false);
+        circulos.cambiarestado(false);
+        lineas.cambiarestado(false);
+        cuadroUML.cambiarestado(false);
+        agregacion.cambiarestado(false);
+        composicion.cambiarestado(false);
+        herencia.cambiarestado(true);
     }
 }

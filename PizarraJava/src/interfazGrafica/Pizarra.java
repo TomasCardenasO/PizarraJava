@@ -18,6 +18,7 @@ public class Pizarra extends JPanel {
     public ArrayList<int[]> lineas;       //para lineas
     public ArrayList<Polygon> romboAgregacion;
     public ArrayList<Polygon> romboComposicion;
+    public ArrayList<Polygon> trianguloHerencia;
     public ArrayList<int[]> dibujos;        //para lapiz          próximamente podríamos unirlos en un solo arreglo
     public ArrayList<Color> colorDibujos;
 /** Descripcion por agregar.*/
@@ -32,6 +33,7 @@ public class Pizarra extends JPanel {
         colorDibujos = new ArrayList<>();
         romboAgregacion = new ArrayList<>();
         romboComposicion = new ArrayList<>();
+        trianguloHerencia = new ArrayList<>();
         this.setBackground(Color.white);
         this.setSize(ANCHO_PIZARRA, LARGO_PIZARRA);
         this.setLocation(10, 20);
@@ -51,13 +53,16 @@ public class Pizarra extends JPanel {
         for(int i = 0; i < lineas.size(); i++) {
             g.drawLine(lineas.get(i)[0], lineas.get(i)[1], lineas.get(i)[2], lineas.get(i)[3]);
         }
-        for(int i = 0; i < romboAgregacion.size(); i ++) {
+        for(int i = 0; i < romboAgregacion.size(); i++) {
             g.drawPolygon(romboAgregacion.get(i));
         }
-        for(int i = 0; i < romboComposicion.size(); i ++) {
+        for(int i = 0; i < romboComposicion.size(); i++) {
             g.fillPolygon(romboComposicion.get(i));
         }
-         for(int i = 0; i < dibujos.size(); i++) {
+        for(int i = 0; i < trianguloHerencia.size(); i++) {
+            g.drawPolygon(trianguloHerencia.get(i));
+        }
+        for(int i = 0; i < dibujos.size(); i++) {
             g.setColor(colorDibujos.get(i)); 
             g.fillOval(dibujos.get(i)[0], dibujos.get(i)[1], dibujos.get(i)[2], dibujos.get(i)[3]);
         }      
