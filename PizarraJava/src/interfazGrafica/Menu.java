@@ -13,8 +13,8 @@ import javax.swing.ButtonGroup;
  * @see Ventana
  */
 public class Menu extends JMenuBar {
-    private JMenu archivo, color, lapiz, goma, figuras, pizarra, tamano;
-    private JMenuItem guardar, guardarcomo, cargarpizarra, borrartodo, rectangulo, circulo, linea, pizarrasiguiente, pizarraanterior, anadirpizarra, eliminarpizarra;
+    private JMenu archivo, color, lapiz, goma, figuras, figurasUML, pizarra, tamano;
+    private JMenuItem guardar, guardarcomo, cargarpizarra, borrartodo, rectangulo, circulo, linea, pizarrasiguiente, pizarraanterior, anadirpizarra, eliminarpizarra, cuadroUML;
     private JRadioButtonMenuItem lapiznegro, lapizazul, lapizrojo, lapizverde, lapizpequeño, lapizmediano, lapizgrande, gomapequeña, gomamediana, gomagrande;
     private ActionListener elActionListener;
     private PanelPrincipal PanelPP;
@@ -105,6 +105,13 @@ public class Menu extends JMenuBar {
         linea.addActionListener(elActionListener);
         figuras.add(linea);
         
+        figurasUML = new JMenu("FigurasUML");
+        this.add(figurasUML);
+        cuadroUML= new JMenuItem("CuadroUML");
+        cuadroUML.addActionListener(elActionListener);
+        figurasUML.add(cuadroUML);
+       
+        
         pizarra = new JMenu("Pizarra");
         this.add(pizarra);
         pizarrasiguiente = new JMenuItem("Pizarra Siguiente");
@@ -187,6 +194,10 @@ public class Menu extends JMenuBar {
             }
             if(e.getSource() == eliminarpizarra) {
                 PanelPP.eliminarPizarra();
+            }
+            if(e.getSource() == cuadroUML) {
+                 PanelPP.cuadroUML();             
+                
             }
         }
         };

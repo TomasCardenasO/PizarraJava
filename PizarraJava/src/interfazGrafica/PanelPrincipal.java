@@ -5,6 +5,7 @@ import DrawingTools.Goma;
 import DrawingTools.Lineas;
 import DrawingTools.Rectangulos;
 import DrawingTools.Circulos;
+import umlTools.CuadroUML;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 import java.awt.Graphics;
@@ -30,6 +31,7 @@ public class PanelPrincipal extends JPanel    {
     private Rectangulos rectangulos;
     private Circulos circulos;
     private Lineas lineas;
+    private CuadroUML cuadroUML;
 /**
  * En constructor se crea el arreglo de pizarras con una pizarra inicial.
  * Se configura el layout en null y el color gris,
@@ -53,6 +55,7 @@ public class PanelPrincipal extends JPanel    {
         rectangulos = new Rectangulos(pizarraActual);
         circulos = new Circulos(pizarraActual);
         lineas = new Lineas(pizarraActual);
+        cuadroUML = new CuadroUML(pizarraActual);
     }
 /**
  * Hace que la pizarra que sigue se muestre en pantalla.
@@ -127,6 +130,8 @@ public class PanelPrincipal extends JPanel    {
         rectangulos.cambiarestado(false);
         circulos.cambiarestado(false);
         lineas.cambiarestado(false);
+        cuadroUML.cambiarestado(false);
+
        
     }
     public void goma() {
@@ -135,6 +140,8 @@ public class PanelPrincipal extends JPanel    {
         rectangulos.cambiarestado(false);
         circulos.cambiarestado(false);
         lineas.cambiarestado(false);
+        cuadroUML.cambiarestado(false);
+
     }
     public void rectangulos(){
         lapiz.cambiarestado(false);
@@ -142,6 +149,8 @@ public class PanelPrincipal extends JPanel    {
         rectangulos.cambiarestado(true);
         circulos.cambiarestado(false);
         lineas.cambiarestado(false);
+        cuadroUML.cambiarestado(false);
+
         
     }
     public void circulos(){
@@ -150,6 +159,8 @@ public class PanelPrincipal extends JPanel    {
         rectangulos.cambiarestado(false);
         circulos.cambiarestado(true);
         lineas.cambiarestado(false);
+        cuadroUML.cambiarestado(false);
+
         
     }
     public void lineas(){           
@@ -158,6 +169,16 @@ public class PanelPrincipal extends JPanel    {
         rectangulos.cambiarestado(false);
         circulos.cambiarestado(false);
         lineas.cambiarestado(true);
+        cuadroUML.cambiarestado(false);
+        
+    }
+    public void cuadroUML(){           
+        lapiz.cambiarestado(false);
+        goma.cambiarestado(false);
+        rectangulos.cambiarestado(false);
+        circulos.cambiarestado(false);
+        lineas.cambiarestado(false);
+        cuadroUML.cambiarestado(true);
         
     }
 }
