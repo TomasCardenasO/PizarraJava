@@ -7,6 +7,7 @@ import DrawingTools.Rectangulos;
 import DrawingTools.Circulos;
 import umlTools.CuadroUML;
 import umlTools.Agregacion;
+import umlTools.Composicion;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 import java.awt.Graphics;
@@ -34,6 +35,7 @@ public class PanelPrincipal extends JPanel    {
     private Lineas lineas;
     private CuadroUML cuadroUML;
     private Agregacion agregacion;
+    private Composicion composicion;
 /**
  * En constructor se crea el arreglo de pizarras con una pizarra inicial.
  * Se configura el layout en null y el color gris,
@@ -59,6 +61,7 @@ public class PanelPrincipal extends JPanel    {
         lineas = new Lineas(pizarraActual);
         cuadroUML = new CuadroUML(pizarraActual);
         agregacion = new Agregacion(pizarraActual);
+        composicion = new Composicion(pizarraActual);
     }
 /**
  * Hace que la pizarra que sigue se muestre en pantalla.
@@ -79,6 +82,7 @@ public class PanelPrincipal extends JPanel    {
             cuadroUML.cambiarPizarra(pizarraActual);
             lineas.cambiarPizarra(pizarraActual);
             agregacion.cambiarPizarra(pizarraActual);
+            composicion.cambiarPizarra(pizarraActual);
         }
     }
 /**
@@ -100,6 +104,7 @@ public class PanelPrincipal extends JPanel    {
             lineas.cambiarPizarra(pizarraActual);
             cuadroUML.cambiarPizarra(pizarraActual);
             agregacion.cambiarPizarra(pizarraActual);
+            composicion.cambiarPizarra(pizarraActual);
         }
     }
 /**
@@ -139,6 +144,7 @@ public class PanelPrincipal extends JPanel    {
         lineas.cambiarestado(false);
         cuadroUML.cambiarestado(false);
         agregacion.cambiarestado(false);
+        composicion.cambiarestado(false);
 
        
     }
@@ -150,6 +156,7 @@ public class PanelPrincipal extends JPanel    {
         lineas.cambiarestado(false);
         cuadroUML.cambiarestado(false);
         agregacion.cambiarestado(false);
+        composicion.cambiarestado(false);
 
     }
     public void rectangulos(){
@@ -160,6 +167,7 @@ public class PanelPrincipal extends JPanel    {
         lineas.cambiarestado(false);
         cuadroUML.cambiarestado(false);
         agregacion.cambiarestado(false);
+        composicion.cambiarestado(false);
 
         
     }
@@ -171,6 +179,7 @@ public class PanelPrincipal extends JPanel    {
         lineas.cambiarestado(false);
         cuadroUML.cambiarestado(false);
         agregacion.cambiarestado(false);
+        composicion.cambiarestado(false);
 
         
     }
@@ -182,6 +191,7 @@ public class PanelPrincipal extends JPanel    {
         lineas.cambiarestado(true);
         cuadroUML.cambiarestado(false);
         agregacion.cambiarestado(false);
+        composicion.cambiarestado(false);
         
     }
     public void cuadroUML(){           
@@ -192,7 +202,7 @@ public class PanelPrincipal extends JPanel    {
         lineas.cambiarestado(false);
         cuadroUML.cambiarestado(true);
         agregacion.cambiarestado(false);
-        
+        composicion.cambiarestado(false);
     }
     public void agregacion() {
         lapiz.cambiarestado(false);
@@ -202,5 +212,16 @@ public class PanelPrincipal extends JPanel    {
         lineas.cambiarestado(false);
         cuadroUML.cambiarestado(false);
         agregacion.cambiarestado(true);
+        composicion.cambiarestado(false);
+    }
+    public void composicion() {
+        lapiz.cambiarestado(false);
+        goma.cambiarestado(false);
+        rectangulos.cambiarestado(false);
+        circulos.cambiarestado(false);
+        lineas.cambiarestado(false);
+        cuadroUML.cambiarestado(false);
+        agregacion.cambiarestado(false);
+        composicion.cambiarestado(true);
     }
 }

@@ -14,7 +14,7 @@ import javax.swing.ButtonGroup;
  */
 public class Menu extends JMenuBar {
     private JMenu archivo, color, lapiz, goma, figuras, figurasUML, pizarra, tamano;
-    private JMenuItem guardar, guardarcomo, cargarpizarra, borrartodo, rectangulo, circulo, linea, pizarrasiguiente, pizarraanterior, anadirpizarra, eliminarpizarra, cuadroUML, agregacion;
+    private JMenuItem guardar, guardarcomo, cargarpizarra, borrartodo, rectangulo, circulo, linea, pizarrasiguiente, pizarraanterior, anadirpizarra, eliminarpizarra, cuadroUML, agregacion, composicion;
     private JRadioButtonMenuItem lapiznegro, lapizazul, lapizrojo, lapizverde, lapizpequeño, lapizmediano, lapizgrande, gomapequeña, gomamediana, gomagrande;
     private ActionListener elActionListener;
     private PanelPrincipal PanelPP;
@@ -113,6 +113,9 @@ public class Menu extends JMenuBar {
         agregacion = new JMenuItem("Agregación");
         agregacion.addActionListener(elActionListener);
         figurasUML.add(agregacion);
+        composicion = new JMenuItem("Composición");
+        composicion.addActionListener(elActionListener);
+        figurasUML.add(composicion);
        
         
         pizarra = new JMenu("Pizarra");
@@ -204,6 +207,9 @@ public class Menu extends JMenuBar {
             }
             if(e.getSource() == agregacion) {
                 PanelPP.agregacion();
+            }
+            if(e.getSource() == composicion) {
+                PanelPP.composicion();
             }
         }
         };
