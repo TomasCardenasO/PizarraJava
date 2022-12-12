@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 import java.awt.Graphics;
 import java.awt.Color;
 import java.util.ArrayList;
+import java.awt.Polygon;
 
 /**
  * Pizarra es una pagina en blanco sobre la que se puede dibujar.
@@ -15,6 +16,7 @@ public class Pizarra extends JPanel {
     public ArrayList<int[]> rectangulos; //arreglo para rectangulos
     public ArrayList<int[]> circulos;     // para circulos
     public ArrayList<int[]> lineas;       //para lineas
+    public ArrayList<Polygon> romboAgregacion;
     public ArrayList<int[]> dibujos;        //para lapiz          próximamente podríamos unirlos en un solo arreglo
     public ArrayList<Color> colorDibujos;
 /** Descripcion por agregar.*/
@@ -27,6 +29,7 @@ public class Pizarra extends JPanel {
         lineas = new ArrayList<>();
         dibujos = new ArrayList<>();
         colorDibujos = new ArrayList<>();
+        romboAgregacion = new ArrayList<>();
         this.setBackground(Color.white);
         this.setSize(ANCHO_PIZARRA, LARGO_PIZARRA);
         this.setLocation(10, 20);
@@ -45,6 +48,9 @@ public class Pizarra extends JPanel {
         }
         for(int i = 0; i < lineas.size(); i++) {
             g.drawLine(lineas.get(i)[0], lineas.get(i)[1], lineas.get(i)[2], lineas.get(i)[3]);
+        }
+        for(int i = 0; i < romboAgregacion.size(); i ++) {
+            g.drawPolygon(romboAgregacion.get(i));
         }
          for(int i = 0; i < dibujos.size(); i++) {
             g.setColor(colorDibujos.get(i)); 

@@ -87,4 +87,8 @@ public class CuadroUML {
         this.estado = estado;
         
     }
+    public void cambiarPizarra(Pizarra p) {
+        pizarraActual = p;
+        eventoOyenteDeRaton();
+    }
 }

@@ -4,6 +4,7 @@ import interfazGrafica.Pizarra;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Polygon;
 /**
  * Herramienta para crear conexiones de agregacion en uml.
  * @author Tomas Cardenas
@@ -33,6 +34,9 @@ public class Agregacion {
                         pizarraActual.g = pizarraActual.getGraphics();
                         pizarraActual.g.setColor(Color.BLACK);  
                         pizarraActual.g.drawLine(x, y, e.getX(), e.getY());
+                        int[] romboX = {x, x - 10, x, x + 10};
+                        int[] romboY = {y - 10, y, y + 10, y};
+                        pizarraActual.g.drawPolygon(romboX, romboY, 4);
                         pizarraActual.repaint();
                     }
                 }
@@ -50,6 +54,10 @@ public class Agregacion {
                     if(e.getModifiersEx() == 0){
                         int[] newLine = {x, y, e.getX(), e.getY()};
                         pizarraActual.lineas.add(newLine);
+                        int[] romboX = {x, x - 10, x, x + 10};
+                        int[] romboY = {y - 10, y, y + 10, y};
+                        Polygon rombo = new Polygon(romboX, romboY, 4);
+                        pizarraActual.romboAgregacion.add(rombo);
                         pizarraActual.repaint();
                     }
                 }
