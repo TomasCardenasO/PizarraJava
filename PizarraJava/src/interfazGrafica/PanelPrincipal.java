@@ -1,7 +1,6 @@
 package interfazGrafica;
 
 import DrawingTools.Lapiz;
-import DrawingTools.Goma;
 import DrawingTools.Lineas;
 import DrawingTools.Rectangulos;
 import DrawingTools.Circulos;
@@ -13,9 +12,12 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 import java.awt.Graphics;
 import java.awt.Color;
+import static java.awt.Color.black;
+
 /**
- * Es la clase donde ocurren todas las acciones.
- * Se puede pensar en ella como una mesa donde se colocan todos los utensilios
+ * Es la clase donde ocurren todas las acciones. Se puede pensar en ella como
+ * una mesa donde se colocan todos los utensilios
+ *
  * @author Tomas Cardenas
  * @author Dreyko Paredes
  * @author Benjamin Puerta
@@ -24,13 +26,13 @@ import java.awt.Color;
  * @see Rectangulos
  * @see Lineas
  */
-public class PanelPrincipal extends JPanel    {
+public class PanelPrincipal extends JPanel {
+
     private ArrayList<Pizarra> pizarras;
     private Pizarra pizarraActual;
     private int indicePizarraActual;
     private int cantidadPizarras; //Se usara para desplegar la cantidad de pizarras en pantalla
     public Lapiz lapiz;
-    public Goma goma;
     private Rectangulos rectangulos;
     private Circulos circulos;
     private Lineas lineas;
@@ -38,26 +40,33 @@ public class PanelPrincipal extends JPanel    {
     private Agregacion agregacion;
     private Composicion composicion;
     private Herencia herencia;
-/**
- * En constructor se crea el arreglo de pizarras con una pizarra inicial.
- * Se configura el layout en null y el color gris,
- * ademas, se crea el lapiz y la herramienta de rectangulos
- */
-    public PanelPrincipal() {
+    public ColorHolder colorHolder;
+    public TamanoHolder tamanoHolder;
+
+    /**
+     * En constructor se crea el arreglo de pizarras con una pizarra inicial. Se
+     * configura el layout en null y el color gris, ademas, se crea el lapiz y
+     * la herramienta de rectangulos
+     * 
+     * @param colorHolder recibe el colorHolder creado porque este debe ser entregado al lapiz al momento de crearlo
+     * @param tamanoHolder recibe el tamanoHolder creado porque este debe ser entregado al lapiz al momento de crearlo
+     */
+    public PanelPrincipal(ColorHolder colorHolder, TamanoHolder tamanoHolder) {
         //Configuracion inicial (Layout y color)
         this.setLayout(null);
         this.setBackground(Color.gray);
-        
+
         //Se crea el arreglo de pizarras y se agrega una pizarra inicial
         pizarras = new ArrayList<Pizarra>();
         pizarras.add(new Pizarra());
         indicePizarraActual = 0;
         pizarraActual = pizarras.get(indicePizarraActual);
         this.add(pizarraActual);
-        
+
         cantidadPizarras = pizarras.size();
-        lapiz = new Lapiz(pizarraActual);
-        goma = new Goma(pizarraActual);
+        this.colorHolder = colorHolder;
+        this.tamanoHolder = tamanoHolder;
+        lapiz = new Lapiz(pizarraActual, colorHolder, tamanoHolder);
         rectangulos = new Rectangulos(pizarraActual);
         circulos = new Circulos(pizarraActual);
         lineas = new Lineas(pizarraActual);
@@ -66,20 +75,22 @@ public class PanelPrincipal extends JPanel    {
         composicion = new Composicion(pizarraActual);
         herencia = new Herencia(pizarraActual);
     }
-/**
- * Hace que la pizarra que sigue se muestre en pantalla.
- * Solo funciona cuando la pizarra actual no es la ultima (indicePizarraActual < pizarras.size() - 1),
- * saca a la pizarra actual de la pantalla y muestra la siguiente
- */
+
+    /**
+     * Hace que la pizarra que sigue se muestre en pantalla. Solo funciona
+     * cuando la pizarra actual no es la ultima (indicePizarraActual <
+     * pizarras.size() - 1), saca a la pizarra actual de la pantalla y muestra
+     * la siguiente
+     */
     public void siguientePizarra() {
-        if(indicePizarraActual < pizarras.size() - 1) {
+        if (indicePizarraActual < pizarras.size() - 1) {
             this.remove(pizarraActual);
             indicePizarraActual += 1;
             pizarraActual = pizarras.get(indicePizarraActual);
             this.add(pizarraActual);
             this.repaint();
-            lapiz.cambiarPizarra(pizarraActual);
-            goma.cambiarPizarra(pizarraActual);
+            //lapiznegro.cambiarPizarra(pizarraActual);
+            //goma.cambiarPizarra(pizarraActual);
             rectangulos.cambiarPizarra(pizarraActual);
             circulos.cambiarPizarra(pizarraActual);
             cuadroUML.cambiarPizarra(pizarraActual);
@@ -89,20 +100,24 @@ public class PanelPrincipal extends JPanel    {
             herencia.cambiarPizarra(pizarraActual);
         }
     }
-/**
- * Hace que la pizarra anterior se muestre en pantalla.
- * Solo funciona cuando la pizarra actual no es la primera (indicePizarraActual > 0).
- * Remueve la pizarra actual del panel y muestra la anterior
- */
+
+    /**
+     * Hace que la pizarra anterior se muestre en pantalla. Solo funciona cuando
+     * la pizarra actual no es la primera (indicePizarraActual > 0). Remueve la
+     * pizarra actual del panel y muestra la anterior
+     */
+    
+    
+    
     public void pizarraAnterior() {
-        if(indicePizarraActual > 0) {
+        if (indicePizarraActual > 0) {
             this.remove(pizarraActual);
             indicePizarraActual -= 1;
             pizarraActual = pizarras.get(indicePizarraActual);
             this.add(pizarraActual);
             this.repaint();
-            lapiz.cambiarPizarra(pizarraActual);
-            goma.cambiarPizarra(pizarraActual);
+            //lapiznegro.cambiarPizarra(pizarraActual);
+            //goma.cambiarPizarra(pizarraActual);
             rectangulos.cambiarPizarra(pizarraActual);
             circulos.cambiarPizarra(pizarraActual);
             lineas.cambiarPizarra(pizarraActual);
@@ -112,38 +127,49 @@ public class PanelPrincipal extends JPanel    {
             herencia.cambiarPizarra(pizarraActual);
         }
     }
-/**
- * Añade una pizarra al final del arreglo.
- * Solo se puede usar cuando la pizarra actual es la ultima (indicePizarraActual == pizarras.size() - 1)
- * Despues de agregar la pizarra se llama a "siguiente pizarra" para que esta se muestre
- */
+
+   
+    
+    
+    /**
+     * Añade una pizarra al final del arreglo. Solo se puede usar cuando la
+     * pizarra actual es la ultima (indicePizarraActual == pizarras.size() - 1)
+     * Despues de agregar la pizarra se llama a "siguiente pizarra" para que
+     * esta se muestre
+     */
     public void añadirPizarra() {
-        if(indicePizarraActual == pizarras.size() - 1) {
+        if (indicePizarraActual == pizarras.size() - 1) {
             pizarras.add(new Pizarra());
             cantidadPizarras = pizarras.size();
             siguientePizarra();
         }
     }
-/**
- * Elimina la pizarra que esta actualmente en pantalla.
- * No es posible eliminar la primera pizarra (indiceABorrar != 0) ya que podría traer diversos problemas
- * Si la pizarra que se quiere eliminar no es la primera, se pasa a la pagina anterior y luego se elimina la pizarra requerida
- */
+
+    /**
+     * Elimina la pizarra que esta actualmente en pantalla. No es posible
+     * eliminar la primera pizarra (indiceABorrar != 0) ya que podría traer
+     * diversos problemas Si la pizarra que se quiere eliminar no es la primera,
+     * se pasa a la pagina anterior y luego se elimina la pizarra requerida
+     */
+    
+    
+    
     public void eliminarPizarra() { //Cuando la pagina sea la primera, hay que bloquear esta opcion en el menu
         int indiceABorrar = indicePizarraActual;
-        if(indiceABorrar != 0) {
+        if (indiceABorrar != 0) {
             pizarraAnterior();
             pizarras.remove(indiceABorrar);
             cantidadPizarras = pizarras.size();
         }
     }
+
     @Override
     public void paint(Graphics g) {
-        super.paint(g); 
+        super.paint(g);
     }
-    public void lapiz(){          
+    
+    public void lapiz(){
         lapiz.cambiarestado(true);
-        goma.cambiarestado(false);
         rectangulos.cambiarestado(false);
         circulos.cambiarestado(false);
         lineas.cambiarestado(false);
@@ -151,24 +177,10 @@ public class PanelPrincipal extends JPanel    {
         agregacion.cambiarestado(false);
         composicion.cambiarestado(false);
         herencia.cambiarestado(false);
-
-       
     }
-    public void goma() {
+    
+    public void rectangulos() {
         lapiz.cambiarestado(false);
-        goma.cambiarestado(true);
-        rectangulos.cambiarestado(false);
-        circulos.cambiarestado(false);
-        lineas.cambiarestado(false);
-        cuadroUML.cambiarestado(false);
-        agregacion.cambiarestado(false);
-        composicion.cambiarestado(false);
-        herencia.cambiarestado(false);
-
-    }
-    public void rectangulos(){
-        lapiz.cambiarestado(false);
-        goma.cambiarestado(false);
         rectangulos.cambiarestado(true);
         circulos.cambiarestado(false);
         lineas.cambiarestado(false);
@@ -176,11 +188,11 @@ public class PanelPrincipal extends JPanel    {
         agregacion.cambiarestado(false);
         composicion.cambiarestado(false);
         herencia.cambiarestado(false);
-        
+
     }
-    public void circulos(){
+    
+    public void circulos() {
         lapiz.cambiarestado(false);
-        goma.cambiarestado(false);
         rectangulos.cambiarestado(false);
         circulos.cambiarestado(true);
         lineas.cambiarestado(false);
@@ -188,11 +200,11 @@ public class PanelPrincipal extends JPanel    {
         agregacion.cambiarestado(false);
         composicion.cambiarestado(false);
         herencia.cambiarestado(false);
-        
+
     }
-    public void lineas(){           
+    
+    public void lineas() {
         lapiz.cambiarestado(false);
-        goma.cambiarestado(false);
         rectangulos.cambiarestado(false);
         circulos.cambiarestado(false);
         lineas.cambiarestado(true);
@@ -201,9 +213,9 @@ public class PanelPrincipal extends JPanel    {
         composicion.cambiarestado(false);
         herencia.cambiarestado(false);
     }
-    public void cuadroUML(){           
+    
+    public void cuadroUML() {
         lapiz.cambiarestado(false);
-        goma.cambiarestado(false);
         rectangulos.cambiarestado(false);
         circulos.cambiarestado(false);
         lineas.cambiarestado(false);
@@ -212,9 +224,9 @@ public class PanelPrincipal extends JPanel    {
         composicion.cambiarestado(false);
         herencia.cambiarestado(false);
     }
+    
     public void agregacion() {
         lapiz.cambiarestado(false);
-        goma.cambiarestado(false);
         rectangulos.cambiarestado(false);
         circulos.cambiarestado(false);
         lineas.cambiarestado(false);
@@ -223,9 +235,9 @@ public class PanelPrincipal extends JPanel    {
         composicion.cambiarestado(false);
         herencia.cambiarestado(false);
     }
+    
     public void composicion() {
         lapiz.cambiarestado(false);
-        goma.cambiarestado(false);
         rectangulos.cambiarestado(false);
         circulos.cambiarestado(false);
         lineas.cambiarestado(false);
@@ -234,9 +246,9 @@ public class PanelPrincipal extends JPanel    {
         composicion.cambiarestado(true);
         herencia.cambiarestado(false);
     }
+    
     public void herencia() {
         lapiz.cambiarestado(false);
-        goma.cambiarestado(false);
         rectangulos.cambiarestado(false);
         circulos.cambiarestado(false);
         lineas.cambiarestado(false);
